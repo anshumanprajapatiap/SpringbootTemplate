@@ -9,4 +9,5 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=dev
     deploy:
+      mode: replicated
       replicas: 3  # Scale to 3 replicas
