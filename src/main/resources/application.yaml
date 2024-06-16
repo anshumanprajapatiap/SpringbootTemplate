@@ -8,6 +8,10 @@ server:
   port: 8080
 
 
+springdoc:
+  swagger-ui:
+    path: /api-documentation.html
+
 
 # Database configuration for dev environment
 #spring.datasource.url=jdbc:mysql://localhost:3306/dev_database
