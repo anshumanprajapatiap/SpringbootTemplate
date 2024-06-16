@@ -16,6 +16,15 @@ docker run -p 8080:8080 springboot-app-java17
  ```
  
  
+ #### Compose Build 
+ docker-compose build
+ 
+ docker-compose up	
+ 
+ 
+ 
+ 
+ 
 ####
  	# Use OpenJDK 17 as base image
 	FROM openjdk:17

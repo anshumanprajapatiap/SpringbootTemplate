@@ -1,7 +1,11 @@
-spring.application.name=SpringbootTemplate
-server.port=8080
+spring:
+  application:
+    name: SpringbootTemplate
+  profiles:
+    active: dev
 
-
+server:
+  port: 8080
 
 
 

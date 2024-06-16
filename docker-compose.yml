@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  springboot-app:
+    build: .
+    image: springboot-app:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+
+# Example of defining volumes, networks, etc., if required
+# volumes:
+#   - ./data:/app/data
+# networks:
+#   - backend-network
