@@ -1,0 +1,48 @@
+stages:
+  - build
+  - test
+  - scan
+  - deploy
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+
+build:
+  stage: build
+  image: maven:3.8.5-openjdk-17-slim
+  script:
+    - mvn clean package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+
+test:
+  stage: test
+  image: maven:3.8.5-openjdk-17-slim
+  script:
+    - mvn test
+
+scan:
+  stage: scan
+  image: some-security-scanner-image:latest
+  script:
+    - echo "Running security scan..."
+
+deploy:
+  stage: deploy
+  image: docker:stable
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
+  environment:
+    name: production
+    url: https://example.com
+  only:
+    - master
