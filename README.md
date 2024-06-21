@@ -85,3 +85,6 @@ docker run -p 8080:8080 springboot-app-java17
 	
 	
 	
+
+### Build Pipeline
+![alt text](<Screenshot 2024-06-21 at 3.07.49 PM.png>)
